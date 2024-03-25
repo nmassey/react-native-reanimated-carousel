@@ -264,6 +264,8 @@ const IScrollViewGesture: React.FC<PropsWithChildren<Props>> = (props) => {
   const onGestureStart = useCallback((_: PanGestureHandlerEventPayload) => {
     "worklet";
 
+    console.log(`onGestureStart, worklet=${_WORKLET}`);
+
     touching.value = true;
     validStart.value = true;
     onScrollStart && runOnJS(onScrollStart)();
@@ -289,6 +291,8 @@ const IScrollViewGesture: React.FC<PropsWithChildren<Props>> = (props) => {
 
   const onGestureUpdate = useCallback((e: PanGestureHandlerEventPayload) => {
     "worklet";
+
+    console.log(`onGestureUpdate, worklet=${_WORKLET}`);
 
     if (validStart.value) {
       validStart.value = false;
@@ -333,6 +337,8 @@ const IScrollViewGesture: React.FC<PropsWithChildren<Props>> = (props) => {
 
   const onGestureEnd = useCallback((e: GestureStateChangeEvent<PanGestureHandlerEventPayload>, _success: boolean) => {
     "worklet";
+
+    console.log(`onGestureEnd, worklet=${_WORKLET}`);
 
     const { velocityX, velocityY, translationX, translationY } = e;
     scrollEndVelocity.value = isHorizontal.value

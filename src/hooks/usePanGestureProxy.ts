@@ -78,18 +78,21 @@ export const usePanGestureProxy = (
     // Setup the original callbacks with the user defined callbacks
     gesture
       .onStart((e) => {
+        console.log(`onStart, worklet=${_WORKLET}`);
         onGestureStart(e);
 
         if (userDefinedConflictGestures.onStart)
           userDefinedConflictGestures.onStart(e);
       })
       .onUpdate((e) => {
+        console.log(`onUpdate, worklet=${_WORKLET}`);
         onGestureUpdate(e);
 
         if (userDefinedConflictGestures.onUpdate)
           userDefinedConflictGestures.onUpdate(e);
       })
       .onEnd((e, success) => {
+        console.log(`onEnd, worklet=${_WORKLET}`);
         onGestureEnd(e, success);
 
         if (userDefinedConflictGestures.onEnd)
